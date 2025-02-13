@@ -11,6 +11,7 @@
 
 This is my **personal** dwm setup with following patches:
 
+- [cool autostart](https://dwm.suckless.org/patches/cool_autostart/)
 - [azerty](https://dwm.suckless.org/patches/azerty/)
 - [custom keybindings and colors](./dwm-custom-20250213-6.5.diff)
 - [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/)
