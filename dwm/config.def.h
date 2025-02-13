@@ -36,7 +36,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      			instance    title       tags mask     isfloating   monitor */
-	{ "Gnome-terminal",  	NULL,       NULL,       0,       		0,           -1 },
+	{ "Alacritty",  		NULL,       NULL,       0,       		0,           -1 },
 	{ "firefox-esr",	  	NULL,       NULL,       2,       		0,           -1 },
 };
 
