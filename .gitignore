@@ -1,7 +1,13 @@
 # binaries
 dwm/dwm
 dmenu/dmenu
+dmenu/stest
 slstatus/slstatus
+
+# generated config.h
+dwm/config.h
+dmenu/config.h
+slstatus/config.h
 
 # Patch Fail
 *.rej
