@@ -41,3 +41,6 @@ cd ../slstatus/
 make
 sudo make install
 ```
+
+## Thanks
+- [ChrisTitusTech/dwm-titus](https://github.com/ChrisTitusTech/dwm-titus)
