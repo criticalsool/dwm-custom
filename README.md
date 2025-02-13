@@ -22,20 +22,21 @@ This is my **personal** dwm setup with following patches:
 Download
 ```bash
 git clone https://github.com/criticalsool/dwm-custom.git
+cd dwm-custom/
 ```
-Build and install dwm
+Build and install **dwm**
 ```bash
 cd dwm/
 make
 sudo make install
 ```
-Build and install dmenu
+Build and install **dmenu**
 ```bash
 cd ../dmenu/
 make
 sudo make install
 ```
-Build and install slstatus
+Build and install **slstatus**
 ```bash
 cd ../slstatus/
 make
