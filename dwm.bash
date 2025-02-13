@@ -13,9 +13,9 @@ fi
 
 # Function to install dependencies for Debian-based distributions
 install_debian() {
-    sudo apt-get update
-    sudo apt-get -qq -y install alacritty feh firefox numlockx
-    sudo apt-get -qq -y install build-essential libx11-dev libxft-dev libxinerama-dev 
+    sudo apt-get update || exit 1
+    echo "Installation of dwm/dmenu/slstatus dependencies"
+    sudo apt-get -qq -y install build-essential libx11-dev libxft-dev libxinerama-dev || exit 1
 }
 
 # Function to install dependencies for Arch-based distributions
@@ -44,24 +44,20 @@ fi
 # Build & Install dwm
 echo "Building dwm $dwm_version"
 cd dwm/
-make
+make || exit 1
 echo "Installing dwm (sudo password needed)"
-sudo make install
+sudo make install || exit 1
 
 # Build & install dmenu
 echo "Building dmenu $dmenu_version"
 cd ../dmenu/
-make
+make || exit 1
 echo "Installing dmenu (sudo password needed)"
-sudo make install
+sudo make install || exit 1
 
 # Build & install slstatus
 echo "Building slstatus $slstatus_version"
 cd ../slstatus/
-make
+make || exit 1
 echo "Installing slstatus (sudo password needed)"
-sudo make install
-
-# Desktop file
-sudo mkdir -pv /usr/share/xsessions/
-sudo install -v -Dm644 dwm.desktop /usr/share/xsessions/
+sudo make install || exit 1

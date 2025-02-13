@@ -7,7 +7,6 @@
 </div>
 
 ---
-### Version : 6.5
 
 This is my **personal** dwm setup with following patches:
 
@@ -20,31 +19,30 @@ This is my **personal** dwm setup with following patches:
 - [warp](https://dwm.suckless.org/patches/warp/)
 
 ## Installation
-Download
 ```bash
-git clone https://github.com/criticalsool/dwm-custom.git
-cd dwm-custom/
+git clone https://github.com/criticalsool/dwm-custom.git && \
+cd dwm-custom/ && \
+bash dwm.bash
 ```
-Build and install **dwm**
+
+> [!NOTE]
+> [dwm.bash](./dwm.bash) will install the dependencies, compile and install **dwl**, **dmenu** and **slstatus**
+
+> [!TIP]
+> [from_minimal.bash](./from_minimal.bash) will install [**xorg**](https://www.x.org/wiki/) and [**greetd**](https://git.sr.ht/~kennylevinsen/greetd) from a minimal CLI installation in addition to execute [dwm.bash](./dwm.bash)
+
 ```bash
-cd dwm/
-make
-sudo make install
+git clone https://github.com/criticalsool/dwm-custom.git && \
+cd dwm-custom/ && \
+bash from_minimal.bash
 ```
-Build and install **dmenu**
-```bash
-cd ../dmenu/
-make
-sudo make install
-```
-Build and install **slstatus**
-```bash
-cd ../slstatus/
-make
-sudo make install
-```
+
+> [!CAUTION]
+> It will also configure autologin and install a bunch of packages you might not want, to work with my dwm configuration. Please **read it** before
 
 ## Thanks
 - [suckless](https://suckless.org/) team for [dwm](https://dwm.suckless.org/), [dmenu](https://tools.suckless.org/dmenu/) and [slstatus](https://tools.suckless.org/slstatus/)
 - [dwm patches contributors](https://dwm.suckless.org/patches)
+- [xorg](https://www.x.org/wiki/) & [greetd](https://git.sr.ht/~kennylevinsen/greetd)
 - [ChrisTitusTech/dwm-titus](https://github.com/ChrisTitusTech/dwm-titus)
+- Reddit, GitHub and Stackoverflow platforms & users
