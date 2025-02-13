@@ -21,6 +21,7 @@ static const char *colors[][3]      	= {
 
 static const char *const autostart[] = {
 	"slstatus", NULL,												/* slstatus bar */
+	"numlockx", "on", NULL,											/* num lock key on */
 	"sh", "-c", "feh --bg-fill ~/Images/wallpaper.png", NULL,		/* setup background */
 	"firefox", NULL,												/* start firefox */
 	NULL /* terminate */
@@ -69,9 +70,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "gnome-terminal", NULL };
 const Key keys[] = {
 	/* modifier                     key        function        argument */
-    { MODKEY,                       XK_Insert, spawn,          SHCMD ("amixer sset Master 5%- unmute")},
-    { MODKEY,                       XK_Home,   spawn,          SHCMD ("amixer sset Master toggle")},
-    { MODKEY,                       XK_Prior,  spawn,          SHCMD ("amixer sset Master 5%+ unmute")},
+    { MODKEY,                       XK_Insert, spawn,          SHCMD ("amixer sset Master toggle")},		/*mute/unmute*/
+	{ MODKEY,                       XK_Home,   spawn,          SHCMD ("amixer sset Master 5%- unmute")},	/*low sound*/
+    { MODKEY,                       XK_Prior,  spawn,          SHCMD ("amixer sset Master 5%+ unmute")},	/*high sound*/
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
