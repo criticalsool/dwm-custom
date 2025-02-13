@@ -11,12 +11,12 @@
 
 This is my **personal** dwm setup with following patches:
 
-- azerty
-- custom keybindings and colors
-- hide vacant tags
-- noborder
-- pertag
-- warp
+- [azerty](https://dwm.suckless.org/patches/azerty/)
+- [custom keybindings and colors](./dwm-custom-20250213-6.5.diff)
+- [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/)
+- [noborder](https://dwm.suckless.org/patches/noborder/)
+- [pertag](https://dwm.suckless.org/patches/pertag/)
+- [warp](https://dwm.suckless.org/patches/warp/)
 
 ## Installation
 Download
@@ -43,4 +43,6 @@ sudo make install
 ```
 
 ## Thanks
+- [suckless](https://suckless.org/) team for [dwm](https://dwm.suckless.org/), [dmenu](https://tools.suckless.org/dmenu/) and [slstatus](https://tools.suckless.org/slstatus/)
+- [dwm patches contributors](https://dwm.suckless.org/patches)
 - [ChrisTitusTech/dwm-titus](https://github.com/ChrisTitusTech/dwm-titus)
