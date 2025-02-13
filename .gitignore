@@ -1,0 +1,11 @@
+# binaries
+dwm/dwm
+dmenu/dmenu
+slstatus/slstatus
+
+# Patch Fail
+*.rej
+*.orig
+
+# Object Files
+*.o
