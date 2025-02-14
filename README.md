@@ -12,7 +12,7 @@ This is my **personal** dwm setup with following patches:
 
 - [cool autostart](https://dwm.suckless.org/patches/cool_autostart/)
 - [azerty](https://dwm.suckless.org/patches/azerty/)
-- [custom keybindings and colors](./dwm-custom-20250213-6.5.diff)
+- custom keybindings and colors (see [dwm/config.def.h](dwm/config.def.h) for more details)
 - [hide vacant tags](https://dwm.suckless.org/patches/hide_vacant_tags/)
 - [noborder](https://dwm.suckless.org/patches/noborder/)
 - [pertag](https://dwm.suckless.org/patches/pertag/)
@@ -29,7 +29,7 @@ bash dwm.bash
 > [dwm.bash](./dwm.bash) will install the dependencies, compile and install **dwl**, **dmenu** and **slstatus**
 
 > [!TIP]
-> [from_minimal.bash](./from_minimal.bash) will install [**xorg**](https://www.x.org/wiki/) and [**greetd**](https://git.sr.ht/~kennylevinsen/greetd) from a minimal CLI installation in addition to execute [dwm.bash](./dwm.bash)
+> [from_minimal.bash](./from_minimal.bash) will start from a minimal Debian or Archlinux CLI installation and install and configure [**xorg**](https://www.x.org/wiki/) and [**greetd**](https://git.sr.ht/~kennylevinsen/greetd) in addition to execute [dwm.bash](./dwm.bash)
 
 ```bash
 git clone https://github.com/criticalsool/dwm-custom.git && \
