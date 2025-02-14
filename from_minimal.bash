@@ -49,14 +49,8 @@ sudo localectl set-x11-keymap fr pc105 latin9 || exit 1
 # Execute dwm on startx
 echo "exec dwm" > ~/.xinitrc
 
-# Configure greetd autologin
-echo '[terminal]
-vt = 7
-
-[default_session]
-command = "/usr/sbin/agreety --cmd /bin/bash"
-user = "_greetd"
-
+# Configure greetd to start x with autologin and log redirection
+echo "
 [initial_session]
-command = "dwm"
-user = "$USER"' | sudo tee /etc/greetd/config.toml > /dev/null
+command = '/usr/bin/startx -- -keeptty >~/.xorg.log 2>&1'
+user = '$USER'" | sudo tee -a /etc/greetd/config.toml > /dev/null
