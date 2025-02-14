@@ -10,7 +10,7 @@ fi
 # Function to install dependencies for Debian-based distributions
 install_debian() {
     sudo apt-get update
-    echo "Installation of xorg"
+    echo "Installation of xorg and greetd"
     sudo apt-get -qq -y install xorg greetd || exit 1
     echo "Installation of custom softwares"
     sudo apt-get -qq -y --ignore-missing install alacritty alsa-utils feh firefox-esr numlockx || exit 1
@@ -51,12 +51,12 @@ echo "exec dwm" > ~/.xinitrc
 
 # Configure greetd autologin
 echo '[terminal]
-vt = 1
+vt = 7
 
 [default_session]
-command = "cage gtkgreet"
-user = "greeter"
+command = "/usr/sbin/agreety --cmd /bin/bash"
+user = "_greetd"
 
 [initial_session]
 command = "dwm"
-user = "$USER"' | sudo tee -a /etc/greetd/config.toml > /dev/null
+user = "$USER"' | sudo tee /etc/greetd/config.toml > /dev/null
