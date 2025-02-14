@@ -11,9 +11,9 @@ fi
 install_debian() {
     sudo apt-get update
     echo "Installation of xorg"
-    sudo apt-get -qq -y xorg || exit 1
+    sudo apt-get -qq -y install xorg greetd || exit 1
     echo "Installation of custom softwares"
-    sudo apt-get -qq -y --ignore-missing install alacritty alsa-utils feh firefox-esr greetd numlockx || exit 1
+    sudo apt-get -qq -y --ignore-missing install alacritty alsa-utils feh firefox-esr numlockx || exit 1
 }
 
 # Function to install dependencies for Arch-based distributions
