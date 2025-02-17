@@ -21,6 +21,8 @@ install_debian() {
 # Archlinux
 if [ "$ID" == "arch" ]; then
     echo "Detected Arch-based distribution"
+    echo "Installation of dwm/dmenu/slstatus dependencies"
+    sudo pacman --noconfirm --noprogressbar --needed -S gcc make || exit 1
 
 # Debian
 elif [ "$ID" == "debian" ]; then

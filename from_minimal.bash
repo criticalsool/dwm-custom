@@ -20,9 +20,9 @@ install_debian() {
 install_arch() {
     sudo pacman -Sy
     echo "Installation of xorg and greetd"
-    sudo pacman --noconfirm --noprogressbar -S xorg-server xorg-xinit greetd || exit 1
+    sudo pacman --noconfirm --noprogressbar --needed -S xorg-server xorg-xinit greetd || exit 1
     echo "Installation of custom softwares"
-    sudo pacman --noconfirm --noprogressbar -S alacritty alsa-utils feh firefox numlockx || exit 1
+    sudo pacman --noconfirm --noprogressbar --needed -S alacritty alsa-utils feh firefox numlockx || exit 1
 }
 
 # Archlinux
