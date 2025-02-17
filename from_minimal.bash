@@ -59,3 +59,10 @@ echo "
 [initial_session]
 command = '/usr/bin/startx -- -keeptty >~/.xorg.log 2>&1'
 user = '$USER'" | sudo tee -a /etc/greetd/config.toml > /dev/null
+
+# Enable greetd service
+sudo systemctl enable greetd.service
+
+# Last print
+echo "Execution success, please reboot for changes to take effect"
+echo "For the wallpapers, just download anyone to ~/Images/wallpaper.png"
