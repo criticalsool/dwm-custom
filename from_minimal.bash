@@ -18,8 +18,11 @@ install_debian() {
 
 # Function to install dependencies for Arch-based distributions
 install_arch() {
-    echo "TODO"
-    exit 0
+    sudo pacman -Sy
+    echo "Installation of xorg and greetd"
+    sudo pacman --noconfirm --noprogressbar -S xorg-server xorg-xinit greetd || exit 1
+    echo "Installation of custom softwares"
+    sudo pacman --noconfirm --noprogressbar -S alacritty alsa-utils feh firefox numlockx || exit 1
 }
 
 # Archlinux
@@ -47,9 +50,11 @@ echo "Changing keyboard layout to french (sudo password needed)"
 sudo localectl set-x11-keymap fr pc105 latin9 || exit 1
 
 # Execute dwm on startx
+echo "Execute dwm on startx (~/.xinitrc)"
 echo "exec dwm" > ~/.xinitrc
 
 # Configure greetd to start x with autologin and log redirection
+echo "Configure greetd to start x with autologin and log redirection (/etc/greetd/config.toml) (sudo password needed)"
 echo "
 [initial_session]
 command = '/usr/bin/startx -- -keeptty >~/.xorg.log 2>&1'

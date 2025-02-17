@@ -18,17 +18,9 @@ install_debian() {
     sudo apt-get -qq -y install build-essential libx11-dev libxft-dev libxinerama-dev || exit 1
 }
 
-# Function to install dependencies for Arch-based distributions
-install_arch() {
-    echo "TODO"
-    exit 0
-}
-
 # Archlinux
 if [ "$ID" == "arch" ]; then
     echo "Detected Arch-based distribution"
-    echo "Installing packages using pacman"
-    install_arch
 
 # Debian
 elif [ "$ID" == "debian" ]; then
