@@ -13,7 +13,7 @@ install_debian() {
     echo "Installation of xorg and greetd"
     sudo apt-get -qq -y install xorg greetd || exit 1
     echo "Installation of custom softwares"
-    sudo apt-get -qq -y --ignore-missing install alacritty alsa-utils feh firefox-esr numlockx || exit 1
+    sudo apt-get -qq -y --ignore-missing install alacritty alsa-utils feh firefox-esr numlockx picom || exit 1
 }
 
 # Function to install dependencies for Arch-based distributions
@@ -22,7 +22,7 @@ install_arch() {
     echo "Installation of xorg and greetd"
     sudo pacman --noconfirm --noprogressbar --needed -S xorg-server xorg-xinit greetd || exit 1
     echo "Installation of custom softwares"
-    sudo pacman --noconfirm --noprogressbar --needed -S alacritty alsa-utils feh firefox numlockx || exit 1
+    sudo pacman --noconfirm --noprogressbar --needed -S alacritty alsa-utils feh firefox numlockx picom || exit 1
 }
 
 # Archlinux
