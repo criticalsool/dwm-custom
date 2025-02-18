@@ -20,12 +20,12 @@ static const char *colors[][3]      	= {
 };
 
 static const char *const autostart[] = {
-	"slstatus", NULL,												/* slstatus bar */
-	"numlockx", "on", NULL,											/* num lock key on */
+	"slstatus", NULL,							/* slstatus bar */
+	"numlockx", "on", NULL,							/* num lock key on */
 	"sh", "-c", "feh --bg-fill ~/Images/wallpaper.png", NULL,		/* setup background */
-	"picom", "-b", NULL,										/* start picom compositor for backround blur*/
-	"firefox", NULL,												/* start firefox */
-	"alacritty", NULL,												/* start alacritty */
+	"picom", "-b", NULL,							/* start picom compositor for backround blur*/
+	"firefox", NULL,							/* start firefox */
+	"alacritty", NULL,							/* start alacritty */
 	NULL /* terminate */
 };
 
@@ -72,9 +72,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "alacritty", NULL };
 const Key keys[] = {
 	/* modifier                     key        function        argument */
-    { MODKEY,                       XK_Insert, spawn,          SHCMD ("amixer sset Master toggle")},		/*mute/unmute*/
+	{ MODKEY,                       XK_Insert, spawn,          SHCMD ("amixer sset Master toggle")},	/*mute/unmute*/
 	{ MODKEY,                       XK_Home,   spawn,          SHCMD ("amixer sset Master 5%- unmute")},	/*low sound*/
-    { MODKEY,                       XK_Prior,  spawn,          SHCMD ("amixer sset Master 5%+ unmute")},	/*high sound*/
+	{ MODKEY,                       XK_Prior,  spawn,          SHCMD ("amixer sset Master 5%+ unmute")},	/*high sound*/
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
@@ -86,7 +86,7 @@ const Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,			            XK_q,      killclient,     {0} },
+	{ MODKEY,			XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
