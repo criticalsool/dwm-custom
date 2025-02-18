@@ -40,6 +40,13 @@ bash from_minimal.bash
 > [!CAUTION]
 > It will also configure autologin and install a bunch of packages you might not want, to work with my dwm configuration. Please **read it** before
 
+
+## Tips
+- flatpak application in **dmenu**
+```bash
+sudo ln -s /var/lib/flatpak/exports/bin/io.freetubeapp.FreeTube /usr/bin/freetube
+```
+
 ## Thanks
 - [suckless](https://suckless.org/) team for [dwm](https://dwm.suckless.org/), [dmenu](https://tools.suckless.org/dmenu/) and [slstatus](https://tools.suckless.org/slstatus/)
 - [dwm patches contributors](https://dwm.suckless.org/patches)
