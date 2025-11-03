@@ -2,7 +2,7 @@
 
 ### Initialisation ###
 
-dwm_version=6.5
+dwm_version=6.6
 dmenu_version=5.3
 slstatus_version=1.0
 

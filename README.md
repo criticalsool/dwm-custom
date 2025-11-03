@@ -26,10 +26,10 @@ bash dwm.bash
 ```
 
 > [!NOTE]
-> [dwm.bash](./dwm.bash) will install the dependencies, compile and install **dwl**, **dmenu** and **slstatus**
+> [dwm.bash](./dwm.bash) will install the dependencies, compile and install **dwl**, **dmenu** and **slstatus**. Nothing more, nothing less.
 
 > [!TIP]
-> [from_minimal.bash](./from_minimal.bash) will start from a minimal Debian or Archlinux CLI installation and install and configure [**xorg**](https://www.x.org/wiki/) and [**greetd**](https://git.sr.ht/~kennylevinsen/greetd) in addition to execute [dwm.bash](./dwm.bash)
+> [from_minimal.bash](./from_minimal.bash) will start from a minimal Debian or Archlinux CLI installation and install and configure [**xorg**](https://www.x.org/wiki/) and [**greetd**](https://git.sr.ht/~kennylevinsen/greetd) in addition to execute [dwm.bash](./dwm.bash).
 
 ```bash
 git clone https://github.com/criticalsool/dwm-custom.git && \
@@ -42,7 +42,7 @@ bash from_minimal.bash
 
 
 ## Tips
-- flatpak application in **dmenu**
+- Add flatpak application in **dmenu**
 ```bash
 sudo ln -s /var/lib/flatpak/exports/bin/io.freetubeapp.FreeTube /usr/bin/freetube
 ```
