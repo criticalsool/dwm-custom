@@ -23,7 +23,7 @@ static const char *const autostart[] = {
 	"slstatus", NULL,							/* slstatus bar */
 	"numlockx", "on", NULL,							/* num lock key on */
 	"sh", "-c", "feh --bg-fill ~/Images/wallpaper.png", NULL,		/* setup background */
-	"picom", "-b", NULL,							/* start picom compositor for backround blur*/
+	"picom", "-b", "--backend", "xrender" , NULL,       /* start picom compositor for backround blur*/
 	"firefox", NULL,							/* start firefox */
 	"alacritty", NULL,							/* start alacritty */
 	NULL /* terminate */

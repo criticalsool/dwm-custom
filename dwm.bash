@@ -4,7 +4,7 @@
 
 dwm_version=6.6
 dmenu_version=5.3
-slstatus_version=1.0
+slstatus_version=1.1
 
 # OS Flavour
 if [ -f /etc/os-release ]; then
