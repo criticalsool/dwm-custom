@@ -47,7 +47,7 @@ bash dwm.bash || exit 1
 
 # Keyboard layout
 echo "Changing keyboard layout to french (sudo password needed)"
-sudo localectl set-x11-keymap fr pc105 latin9 || exit 1
+sudo localectl set-x11-keymap fr pc105 latin9
 
 # Execute dwm on startx
 echo "Execute dwm on startx (~/.xinitrc)"

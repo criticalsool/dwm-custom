@@ -40,6 +40,11 @@ bash from_minimal.bash
 > [!CAUTION]
 > It will also configure autologin and install a bunch of packages you might not want, to work with my dwm configuration. Please **read it** before
 
+| Distribution | dwm.bash | from_minimal.bash |
+| --- | --- | --- |
+| Debian (13) trixie | ✅ | ✅ |
+| Debian (12) bookworm | ✅ | ✅ |
+
 
 ## Tips
 - Add flatpak application in **dmenu**

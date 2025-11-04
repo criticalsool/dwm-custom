@@ -3,7 +3,7 @@
 ### Initialisation ###
 
 dwm_version=6.6
-dmenu_version=5.3
+dmenu_version=5.4
 slstatus_version=1.1
 
 # OS Flavour
