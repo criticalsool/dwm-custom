@@ -13,22 +13,40 @@ fi
 
 # Function to install dependencies for Debian-based distributions
 install_debian() {
-    sudo apt-get update || exit 1
+    $CMD apt-get update || exit 1
     echo "Installation of dwm/dmenu/slstatus dependencies"
-    sudo apt-get -qq -y install build-essential libx11-dev libxft-dev libxinerama-dev || exit 1
+    $CMD apt-get -qq -y install build-essential libx11-dev libxft-dev libxinerama-dev || exit 1
 }
+
+install_arch() {
+    echo "Installation of dwm/dmenu/slstatus dependencies"
+    $CMD pacman --noconfirm --noprogressbar --needed -S gcc make || exit 1
+}
+
+install_alpine() {
+    echo "Installation of dwm/dmenu/slstatus dependencies"
+    $CMD apk gcc make || exit 1
+}
+
+    echo "Installing Dependencies using apk"
 
 # Archlinux
 if [ "$ID" == "arch" ]; then
     echo "Detected Arch-based distribution"
-    echo "Installation of dwm/dmenu/slstatus dependencies"
-    sudo pacman --noconfirm --noprogressbar --needed -S gcc make || exit 1
+    CMD="sudo "
+    install_arch
 
 # Debian
 elif [ "$ID" == "debian" ]; then
     echo "Detected Debian-based distribution"
-    echo "Installing Dependencies using apt"
+    CMD="sudo "
     install_debian
+
+# Alpine
+elif [ "$ID" == "alpine" ]; then
+    echo "Detected Alpine distribution"
+    CMD="doas "
+    install_alpine
 
 else
     echo "Distribution not found / Unsupported distribution"
@@ -40,18 +58,18 @@ echo "Building dwm $dwm_version"
 cd dwm/
 make || exit 1
 echo "Installing dwm (sudo password needed)"
-sudo make install || exit 1
+$CMD make install || exit 1
 
 # Build & install dmenu
 echo "Building dmenu $dmenu_version"
 cd ../dmenu/
 make || exit 1
 echo "Installing dmenu (sudo password needed)"
-sudo make install || exit 1
+$CMD make install || exit 1
 
 # Build & install slstatus
 echo "Building slstatus $slstatus_version"
 cd ../slstatus/
 make || exit 1
 echo "Installing slstatus (sudo password needed)"
-sudo make install || exit 1
+$CMD make install || exit 1
