@@ -24,11 +24,10 @@ install_arch() {
 }
 
 install_alpine() {
+    $CMD apk update || exit 1
     echo "Installation of dwm/dmenu/slstatus dependencies"
-    $CMD apk gcc make || exit 1
+    $CMD apk add git make gcc g++ libx11-dev libxft-dev libxinerama-dev ncurses || exit 1
 }
-
-    echo "Installing Dependencies using apk"
 
 # Archlinux
 if [ "$ID" == "arch" ]; then

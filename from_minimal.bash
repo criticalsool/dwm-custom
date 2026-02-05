@@ -17,20 +17,25 @@ install_debian() {
 }
 
 # Function to install dependencies for Alpine
+# https://wiki.alpinelinux.org/wiki/Dwm
 # https://wiki.alpinelinux.org/wiki/Alpine_configuration_management_scripts#setup-xorg-base
 install_alpine() {
-    $CMD apk update
+    echo "Enabling community repository"
+    $CMD setup-apkrepos -co || exit 1
+    echo "Setting up eudev"
+    $CMD setup-devd udev || exit 1
     echo "Installation of xorg base"
+    $CMD apk update || exit 1
     $CMD setup-xorg-base || exit 1
     echo "Installation of greetd"
     $CMD apk add greetd || exit 1
     echo "Installation of custom softwares"
-    $CMD apk add alacritty alsa-utils feh firefox-esr picom || exit 1
+    $CMD apk add alacritty alsa-utils feh dbus-x11 adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
 }
 
 # Function to install dependencies for Arch-based distributions
 install_arch() {
-    $CMD pacman -Sy
+    $CMD pacman -Sy || exit 1
     echo "Installation of xorg and greetd"
     $CMD pacman --noconfirm --noprogressbar --needed -S xorg-server xorg-xinit greetd || exit 1
     echo "Installation of custom softwares"
@@ -66,29 +71,44 @@ fi
 # Install dwm
 bash dwm.bash || exit 1
 
-# Keyboard layout
-echo "Changing keyboard layout to french (sudo password needed)"
-$CMD localectl set-x11-keymap fr pc105 latin9
+if [ "$ID" != "alpine" ]; then
+    # Keyboard layout
+    echo "Changing keyboard layout to french (sudo password needed)"
+    $CMD localectl set-x11-keymap fr pc105 latin9
 
-# Execute dwm on startx
-echo "Execute dwm on startx (~/.xinitrc)"
-echo "exec dwm" > ~/.xinitrc
+    # Execute dwm on startx
+    echo "Execute dwm on startx (~/.xinitrc)"
+    echo "exec dwm" > ~/.xinitrc
 
-# Configure greetd to start x with autologin and log redirection
-echo "Configure greetd to start x with autologin and log redirection (/etc/greetd/config.toml) (sudo password needed)"
-echo "
-[initial_session]
+    # Configure greetd to start x with autologin and log redirection
+    echo "Configure greetd to start x with autologin and log redirection (/etc/greetd/config.toml) (sudo password needed)"
+    echo "[initial_session]
 command = '/usr/bin/startx -- -keeptty >~/.xorg.log 2>&1'
 user = '$USER'" | $CMD tee -a /etc/greetd/config.toml > /dev/null
 
-# Enable greetd service
-if [ "$ID" == "alpine" ]; then
+    # Enable greetd service
+    $CMD systemctl enable greetd.service
+else
+    # Execute dwm on startx
+    echo "#!/bin/sh
+# Start D-Bus session
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+    eval $(dbus-launch --sh-syntax --exit-with-session)
+fi
+exec dwm
+" > ~/.xinitrc
+
+    # Configure greetd to start x with autologin and log redirection
+    echo "Configure greetd to start x with autologin and log redirection (/etc/greetd/config.toml) (sudo password needed)"
+    echo "[initial_session]
+command = '/usr/bin/startx -- -keeptty >~/.xorg.log 2>&1'
+user = '$USER'" | $CMD tee -a /etc/greetd/config.toml > /dev/null
+
+    # Enable greetd service
     $CMD rc-update add greetd
     $CMD rc-service greetd start
-else
-    $CMD systemctl enable greetd.service
 fi
 
 # Last print
 echo "Execution success, please reboot for changes to take effect"
-echo "For the wallpapers, just download anyone to ~/Images/wallpaper.png"
+echo "For the wallpaper, just replace ~/Images/wallpaper.png"
