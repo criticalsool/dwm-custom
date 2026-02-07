@@ -28,9 +28,9 @@ install_alpine() {
     $CMD apk update || exit 1
     $CMD setup-xorg-base || exit 1
     echo "Installation of greetd"
-    $CMD apk add greetd || exit 1
+    $CMD apk add greetd greetd-agreety elogind || exit 1
     echo "Installation of custom softwares"
-    $CMD apk add alacritty alsa-utils feh dbus-x11 setxkbmap icu-data-full greetd-agreety adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
+    $CMD apk add alacritty alsa-utils feh dbus-x11 setxkbmap icu-data-full font-meslo-nerd mandoc mandoc-apropos docs adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
 }
 
 # Function to install dependencies for Arch-based distributions
@@ -103,16 +103,13 @@ exec dwm
     # Configure greetd to start x with autologin and log redirection
     $CMD mkdir -p /etc/greetd
     echo "Configure greetd to start x with autologin and log redirection (/etc/greetd/config.toml) (sudo password needed)"
-    echo "[terminal]
-vt = 1
-
-[default_session]
-command = "/usr/bin/agreety --cmd /bin/bash"
-    
-[initial_session]
+    echo "[initial_session]
 command = '/usr/bin/startx -- -keeptty >~/.xorg.log 2>&1'
 user = '$USER'" | $CMD tee -a /etc/greetd/config.toml > /dev/null
 
+    # Enable elogind service
+    $CMD rc-update add elogind
+    $CMD rc-service elogind start
     # Enable greetd service
     $CMD rc-update add greetd
     $CMD rc-service greetd start
