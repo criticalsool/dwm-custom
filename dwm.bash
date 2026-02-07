@@ -67,8 +67,10 @@ echo "Installing dmenu (sudo password needed)"
 $CMD make install || exit 1
 
 # Build & install slstatus
-echo "Building slstatus $slstatus_version"
-cd ../slstatus/
-make || exit 1
-echo "Installing slstatus (sudo password needed)"
-$CMD make install || exit 1
+if [ "$ID" != "alpine" ]; then
+    echo "Building slstatus $slstatus_version"
+    cd ../slstatus/
+    make || exit 1
+    echo "Installing slstatus (sudo password needed)"
+    $CMD make install || exit 1
+fi
