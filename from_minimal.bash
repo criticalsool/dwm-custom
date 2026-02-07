@@ -13,7 +13,7 @@ install_debian() {
     echo "Installation of xorg and greetd"
     $CMD apt-get -qq -y install xorg greetd || exit 1
     echo "Installation of custom softwares"
-    $CMD apt-get -qq -y --ignore-missing install alacritty alsa-utils feh firefox-esr numlockx picom || exit 1
+    $CMD apt-get -qq -y --ignore-missing install alacritty alsa-utils feh batcat firefox-esr numlockx picom || exit 1
 }
 
 # Function to install dependencies for Alpine
@@ -23,7 +23,7 @@ install_alpine() {
     echo "Installation of xorg base with greetd"
     $CMD setup-xorg-base dbus dbus-x11 greetd greetd-agreety elogind polkit polkit-elogind || exit 1
     echo "Installation of custom softwares"
-    $CMD apk add alacritty alsa-utils feh setxkbmap icu-data-full font-meslo-nerd mandoc mandoc-apropos docs adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
+    $CMD apk add alacritty alsa-utils feh bat setxkbmap icu-data-full font-meslo-nerd mandoc mandoc-apropos docs adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
 }
 
 # Function to install dependencies for Arch-based distributions
@@ -32,7 +32,7 @@ install_arch() {
     echo "Installation of xorg and greetd"
     $CMD pacman --noconfirm --noprogressbar --needed -S xorg-server xorg-xinit greetd || exit 1
     echo "Installation of custom softwares"
-    $CMD pacman --noconfirm --noprogressbar --needed -S alacritty alsa-utils feh firefox numlockx picom || exit 1
+    $CMD pacman --noconfirm --noprogressbar --needed -S alacritty alsa-utils feh bat firefox numlockx picom || exit 1
 }
 
 # Archlinux
