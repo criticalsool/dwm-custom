@@ -20,10 +20,8 @@ install_debian() {
 # https://wiki.alpinelinux.org/wiki/Dwm
 # https://wiki.alpinelinux.org/wiki/Alpine_configuration_management_scripts#setup-xorg-base
 install_alpine() {
-    echo "Installation of xorg base"
-    $CMD setup-xorg-base || exit 1
-    echo "Installation of greetd"
-    $CMD apk add dbus dbus-x11 greetd greetd-agreety elogind polkit polkit-elogind || exit 1
+    echo "Installation of xorg base with greetd"
+    $CMD setup-xorg-base dbus dbus-x11 greetd greetd-agreety elogind polkit polkit-elogind || exit 1
     echo "Installation of custom softwares"
     $CMD apk add alacritty alsa-utils feh setxkbmap icu-data-full font-meslo-nerd mandoc mandoc-apropos docs adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
 }
