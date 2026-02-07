@@ -107,12 +107,30 @@ exec dwm
 command = '/usr/bin/startx -- -keeptty >~/.xorg.log 2>&1'
 user = '$USER'" | $CMD tee -a /etc/greetd/config.toml > /dev/null
 
+    # Configure allacritty
+    echo "[font]
+size = 16
+
+[font.bold]
+family = "MesloLGS Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "MesloLGS Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "MesloLGS Nerd Font Mono"
+style = "Regular"
+
+[window]
+opacity = 0.6
+blur = true" > .alacritty.toml
+
     # Enable elogind service
     $CMD rc-update add elogind
-    $CMD rc-service elogind start
     # Enable greetd service
     $CMD rc-update add greetd
-    $CMD rc-service greetd start
 fi
 
 # Last print
