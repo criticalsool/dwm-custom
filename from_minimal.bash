@@ -20,17 +20,12 @@ install_debian() {
 # https://wiki.alpinelinux.org/wiki/Dwm
 # https://wiki.alpinelinux.org/wiki/Alpine_configuration_management_scripts#setup-xorg-base
 install_alpine() {
-    echo "Enabling community repository"
-    $CMD setup-apkrepos -co || exit 1
-    echo "Setting up eudev"
-    $CMD setup-devd udev || exit 1
     echo "Installation of xorg base"
-    $CMD apk update || exit 1
     $CMD setup-xorg-base || exit 1
     echo "Installation of greetd"
-    $CMD apk add greetd greetd-agreety elogind || exit 1
+    $CMD apk add dbus dbus-x11 greetd greetd-agreety elogind polkit polkit-elogind || exit 1
     echo "Installation of custom softwares"
-    $CMD apk add alacritty alsa-utils feh dbus-x11 setxkbmap icu-data-full font-meslo-nerd mandoc mandoc-apropos docs adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
+    $CMD apk add alacritty alsa-utils feh setxkbmap icu-data-full font-meslo-nerd mandoc mandoc-apropos docs adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
 }
 
 # Function to install dependencies for Arch-based distributions
@@ -108,7 +103,7 @@ command = '/usr/bin/startx -- -keeptty >~/.xorg.log 2>&1'
 user = '$USER'" | $CMD tee -a /etc/greetd/config.toml > /dev/null
 
     # Configure allacritty
-    echo "[font]
+    echo '[font]
 size = 16
 
 [font.bold]
@@ -125,10 +120,12 @@ style = "Regular"
 
 [window]
 opacity = 0.6
-blur = true" > .alacritty.toml
+blur = true' > ~/.alacritty.toml
 
     # Enable elogind service
-    $CMD rc-update add elogind
+    $CMD rc-update add elogind boot
+    # Enable dbus service
+    $CMD rc-update add dbus
     # Enable greetd service
     $CMD rc-update add greetd
 fi
