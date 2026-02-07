@@ -30,7 +30,7 @@ install_alpine() {
     echo "Installation of greetd"
     $CMD apk add greetd || exit 1
     echo "Installation of custom softwares"
-    $CMD apk add alacritty alsa-utils feh dbus-x11 adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
+    $CMD apk add alacritty alsa-utils feh dbus-x11 setxkbmap icu-data-full adwaita-icon-theme font-dejavu firefox-esr picom || exit 1
 }
 
 # Function to install dependencies for Arch-based distributions
@@ -91,6 +91,8 @@ user = '$USER'" | $CMD tee -a /etc/greetd/config.toml > /dev/null
 else
     # Execute dwm on startx
     echo "#!/bin/sh
+# French keyboard
+setxkbmap fr &
 # Start D-Bus session
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
     eval $(dbus-launch --sh-syntax --exit-with-session)
@@ -99,6 +101,7 @@ exec dwm
 " > ~/.xinitrc
 
     # Configure greetd to start x with autologin and log redirection
+    $CMD mkdir -p /etc/greetd
     echo "Configure greetd to start x with autologin and log redirection (/etc/greetd/config.toml) (sudo password needed)"
     echo "[initial_session]
 command = '/usr/bin/startx -- -keeptty >~/.xorg.log 2>&1'
