@@ -21,16 +21,16 @@ static const char *colors[][3]      	= {
 
 static const char *const autostart[] = {
 	"slstatus", NULL,							/* slstatus bar */
-	"numlockx", "on", NULL,							/* num lock key on */
-	"sh", "-c", "feh --bg-fill ~/Images/wallpaper.png", NULL,		/* setup background */
+	"numlockx", "on", NULL,
+               /* num lock key on */
+	"sh", "-c", "feh --bg-fill ~/.wallpaper.png", NULL,		/* setup background */
 	"picom", "-b", "--backend", "xrender" , NULL,       /* start picom compositor for backround blur*/
-	"firefox", NULL,							/* start firefox */
 	"alacritty", NULL,							/* start alacritty */
 	NULL /* terminate */
 };
 
 /* tagging */
-static const char *tags[] = { "Terminal", "Internet", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "Terminal", "Internet", "Fichiers", "Keepass", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -75,16 +75,16 @@ const Key keys[] = {
 	{ MODKEY,                       XK_Insert, spawn,          SHCMD ("amixer sset Master toggle")},	/*mute/unmute*/
 	{ MODKEY,                       XK_Home,   spawn,          SHCMD ("amixer sset Master 5%- unmute")},	/*low sound*/
 	{ MODKEY,                       XK_Prior,  spawn,          SHCMD ("amixer sset Master 5%+ unmute")},	/*high sound*/
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_p,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_z,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,			XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
